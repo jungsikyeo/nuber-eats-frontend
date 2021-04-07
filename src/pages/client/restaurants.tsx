@@ -1,5 +1,4 @@
 import { gql, useQuery } from "@apollo/client";
-import { url } from "inspector";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
@@ -79,16 +78,16 @@ export const Restaurants = () => {
         />
       </form>
       {!loading && (
-        <div className="max-w-screen-2xl pb-20 mx-auto mt-8">
-          <div className="flex justify-around max-w-sm mx-auto ">
+        <div className="container pb-20 mt-8">
+          <div className="max-w-screen-xl flex justify-around items-start max-w-sm mx-auto truncate">
             {data?.allCategories.categories?.map((category) => (
               <Link key={category.id} to={`/category/${category.slug}`}>
-                <div className="flex flex-col group items-center cursor-pointer">
+                <div className="w-20 flex flex-col group items-center cursor-pointer">
                   <div
                     className=" w-16 h-16 bg-cover group-hover:bg-gray-100 rounded-full"
                     style={{ backgroundImage: `url(${category.coverImg})` }}
                   ></div>
-                  <span className="mt-1 text-sm text-center font-medium">
+                  <span className="w-20 mt-1 text-sm text-center font-medium leading-8 truncate">
                     {category.name}
                   </span>
                 </div>
