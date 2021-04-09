@@ -5,6 +5,9 @@ import { FULL_ORDER_FRAGMENT } from "../../fragments";
 import { coockedOrders } from "../../__generated__/coockedOrders";
 import { useHistory } from "react-router-dom";
 import { takeOrder, takeOrderVariables } from "../../__generated__/takeOrder";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const COOCKED_ORDERS_SUBSCRIPTION = gql`
   subscription coockedOrders {
@@ -149,7 +152,7 @@ export const Dashboard = () => {
             lat: 36.58,
             lng: 125.95,
           }}
-          bootstrapURLKeys={{ key: "AIzaSyAt6YonM-JyJOxNEHeUeE59QCs1gmTi0VE" }}
+          bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAP_API}`}}
         ></GoogleMapReact>
       </div>
       <div className=" max-w-screen-sm mx-auto bg-white relative -top-10 shadow-lg py-8 px-5">

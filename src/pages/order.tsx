@@ -102,7 +102,7 @@ export const Order = () => {
     });
   };
   return (
-    <div className="mt-32 container flex justify-center">
+    <div className="my-32 container flex justify-center">
       <Helmet>
         <title>Order #{params.id} | Nuber Eats</title>
       </Helmet>
