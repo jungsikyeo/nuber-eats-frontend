@@ -15,7 +15,7 @@ export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/graphql`,
+  uri: `ws://nuber-eats-backend-yjs.herokuapp.com/graphql`,
   options: {
     reconnect: true,
     connectionParams: {
