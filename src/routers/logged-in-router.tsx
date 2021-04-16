@@ -16,6 +16,7 @@ import { AddDish } from "../pages/owner/add-dish";
 import { Order } from "../pages/order";
 import { Dashboard } from "../pages/driver/dashboard";
 import { UserRole } from "../__generated__/globalTypes";
+import { Logout } from "../pages/logout";
 
 const clientRoutes = [
   {
@@ -40,6 +41,7 @@ const commonRoutes = [
   { path: "/confirm", component: <ConfirmEmail /> },
   { path: "/edit-profile", component: <EditProfile /> },
   { path: "/orders/:id", component: <Order /> },
+  { path: "/logout", component: <Logout /> },
 ];
 
 const restaurantRoutes = [

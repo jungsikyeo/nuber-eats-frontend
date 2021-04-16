@@ -14,6 +14,12 @@ const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
+export const makeLogout = () => {
+  localStorage.removeItem(LOCALSTORAGE_TOKEN);
+  isLoggedInVar(false);
+  authTokenVar("");
+};
+
 const wsLink = new WebSocketLink({
   uri:
     process.env.NODE_ENV === "production"

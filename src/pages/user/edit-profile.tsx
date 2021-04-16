@@ -2,6 +2,7 @@ import { gql, useApolloClient, useMutation } from "@apollo/client";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { Button } from "../../components/button";
 import { useMe } from "../../hooks/useMe";
 import {
@@ -106,6 +107,9 @@ export const EditProfile = () => {
           canClick={formState.isValid}
           actionText="Save Profile"
         />
+        <Link to={"/logout"}>
+          <div className="btn flex justify-center items-center transition-colors bg-red-600 hover:bg-red-700">Logout</div>
+        </Link>
       </form>
     </div>
   );
