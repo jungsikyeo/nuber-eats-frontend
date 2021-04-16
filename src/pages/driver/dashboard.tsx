@@ -37,7 +37,7 @@ interface IDriverProps {
   lng: number;
   $hover?: any;
 }
-const Driver: React.FC<IDriverProps> = () => <div className="text-lg">🚖</div>;
+//const Driver: React.FC<IDriverProps> = () => <div className="text-lg">🚖</div>;
 
 export const Dashboard = () => {
   const [driverCoords, setDriverCoords] = useState<ICoords>({ lng: 0, lat: 0 });
@@ -69,7 +69,7 @@ export const Dashboard = () => {
         }
       ); */
     }
-  }, [driverCoords.lat, driverCoords.lng]);
+  }, [driverCoords.lat, driverCoords.lng, map, maps]);
   const onApiLoaded = ({ map, maps }: { map: any; maps: any }) => {
     map.panTo(new google.maps.LatLng(driverCoords.lat, driverCoords.lng));
     setMap(map);
@@ -115,7 +115,7 @@ export const Dashboard = () => {
     if (coockedOrdersData?.cookedOrders.id) {
       makeRoute();
     }
-  }, [coockedOrdersData]);
+  }, [coockedOrdersData, makeRoute]);
   const history = useHistory();
   const onCompleted = (data: takeOrder) => {
     if (data.takeOrder.ok) {

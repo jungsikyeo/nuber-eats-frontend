@@ -48,7 +48,7 @@ interface IRestaurantParams {
 
 export const Restaurant = () => {
   const params = useParams<IRestaurantParams>();
-  const { loading, data } = useQuery<restaurant, restaurantVariables>(
+  const { data } = useQuery<restaurant, restaurantVariables>(
     RESTAURANT_QUERY,
     {
       variables: {
@@ -87,7 +87,7 @@ export const Restaurant = () => {
     const oldItem = getItem(dishId);
     if (oldItem) {
       const hasOption = Boolean(
-        oldItem.options?.find((aOption) => aOption.name == optionName)
+        oldItem.options?.find((aOption) => aOption.name === optionName)
       );
       if (!hasOption) {
         removeFromOrder(dishId);
@@ -138,7 +138,7 @@ export const Restaurant = () => {
   const history = useHistory();
   const onCompleted = (data: createOrder) => {
     const {
-      createOrder: { ok, orderId },
+      createOrder: { orderId },
     } = data;
     if (data.createOrder.ok) {
       history.push(`/orders/${orderId}`);

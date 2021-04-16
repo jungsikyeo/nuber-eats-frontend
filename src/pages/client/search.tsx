@@ -1,7 +1,7 @@
 import { gql, useLazyQuery } from "@apollo/client";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { RESTAURANT_FRAGMENT } from "../../fragments";
 import {
   searchRestaurant,
@@ -27,9 +27,9 @@ const SEARCH_RESTAURANT = gql`
 export const Search = () => {
   const [page, setPage] = useState(1);
   const location = useLocation();
-  const [_, query] = location.search.split("?term=");
+  const [, query] = location.search.split("?term=");
   const history = useHistory();
-  const [callQuery, { loading, data, called }] = useLazyQuery<
+  const [callQuery, { loading, data }] = useLazyQuery<
     searchRestaurant,
     searchRestaurantVariables
   >(SEARCH_RESTAURANT);
@@ -45,7 +45,7 @@ export const Search = () => {
         },
       },
     });
-  }, [history, location]);
+  }, [callQuery, history, location, query]);
   const onNextPageClick = () => setPage((current) => current + 1);
   const onPrevPageClick = () => setPage((current) => current - 1);
   return (
@@ -53,7 +53,10 @@ export const Search = () => {
       <Helmet>
         <title>Search | Nuber Eats</title>
       </Helmet>
-      <h1 className="container mt-4 text-center"><span className="font-bold">Search</span>{` : "${query}"`}</h1>
+      <h1 className="container mt-4 text-center">
+        <span className="font-bold">Search</span>
+        {` : "${query}"`}
+      </h1>
       {!loading && (
         <div className="container pb-20 mt-2">
           <div className="grid mt-8 md:grid-cols-3 gap-x-5 gap-y-10">

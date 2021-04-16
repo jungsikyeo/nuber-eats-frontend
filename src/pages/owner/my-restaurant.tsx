@@ -8,7 +8,6 @@ import {
   VictoryChart,
   VictoryLabel,
   VictoryLine,
-  VictoryPie,
   VictoryTheme,
   VictoryTooltip,
   VictoryVoronoiContainer,
@@ -90,7 +89,7 @@ export const MyRestaurant = () => {
       alert("Your restaurant is being promoted!");
     }
   };
-  const [createPaymentMutation, { loading }] = useMutation<
+  const [createPaymentMutation] = useMutation<
     createPayment,
     createPaymentVariables
   >(CREATE_PAYMENT_MUTATION, {
@@ -126,7 +125,7 @@ export const MyRestaurant = () => {
     if (subscriptionData?.pendingOrders.id) {
       history.push(`/orders/${subscriptionData.pendingOrders.id}`);
     }
-  }, [subscriptionData]);
+  }, [history, subscriptionData]);
   return (
     <div>
       <Helmet>
